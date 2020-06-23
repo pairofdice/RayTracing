@@ -1,4 +1,4 @@
-use std::ops::{AddAssign, MulAssign};
+use std::ops::{AddAssign, MulAssign, DivAssign};
 fn main() {
     const IMAGE_WIDTH: u32 = 256;
     const IMAGE_HEIGHT: u32 = 256;
@@ -29,6 +29,7 @@ impl Vec3 {
     fn x(self) -> f64 { self.e[0] }
     fn y(self) -> f64 { self.e[1] }
     fn z(self) -> f64 { self.e[2] }
+
     fn new() -> Vec3 {
         Vec3 {
             e: [0.0, 0.0 ,0.0],
@@ -51,11 +52,20 @@ impl Vec3 {
 }
 
 impl MulAssign for Vec3 {
-    fn mul_assign(&mut self, other: Self) {
+    fn mul_assign(&mut self, t: Self) {
     }
 }
 
 impl AddAssign for Vec3 {
     fn add_assign(&mut self, other: Self) {
+        *self = Self {
+            // there has to be a better way
+            e: [self.e[0] + other.x(), self.e[1] + other.y(), self.e[2] + other.z(),
+        }
+    }
+}
+
+impl DivAssign for Vec3 {
+    fn div_assign(&mut self, other: Self) {
     }
 }
