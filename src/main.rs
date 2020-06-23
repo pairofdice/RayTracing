@@ -43,11 +43,11 @@ impl Vec3 {
     }
 
     fn length(&self) -> f64{
-        unimplemented!("2.0_f64.sqrt()");
+        self.length_squared().sqrt()
     }
 
     fn length_squared(&self) -> f64 {
-        unimplemented!("2.0_f64.sqrt()");
+        self.e[0]*self.e[0] + self.e[1]*self.e[1] + self.e[2]*self.e[2]
     }
 
     fn multiply(&mut self, t: f64) {
@@ -63,11 +63,9 @@ impl Vec3 {
     }
 }
 
-
 impl AddAssign for Vec3 {
     fn add_assign(&mut self, other: Self) {
         *self = Self {
-            // there has to be a better way
             e: [self.e[0] + other.x(), self.e[1] + other.y(), self.e[2] + other.z(),
         }
     }
@@ -76,7 +74,6 @@ impl AddAssign for Vec3 {
 impl SubAssign for Vec3 {
     fn sub_assign(&mut self, other: Self) {
         *self = Self {
-            // there has to be a better way
             e: [self.e[0] - other.x(), self.e[1] - other.y(), self.e[2] - other.z(),
         }
     }
