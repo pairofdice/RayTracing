@@ -26,9 +26,9 @@ struct Vec3 {
 }
 
 impl Vec3 {
-    fn x(self) -> f64 { self.e[0] }
-    fn y(self) -> f64 { self.e[1] }
-    fn z(self) -> f64 { self.e[2] }
+    fn x(&self) -> f64 { self.e[0] }
+    fn y(&self) -> f64 { self.e[1] }
+    fn z(&self) -> f64 { self.e[2] }
 
     fn new() -> Vec3 {
         Vec3 {
@@ -42,7 +42,7 @@ impl Vec3 {
         }
     }
 
-    fn length(&self) -> f64{
+    fn length(&self) -> f64 {
         self.length_squared().sqrt()
     }
 
@@ -63,10 +63,11 @@ impl Vec3 {
     }
 }
 
+
 impl AddAssign for Vec3 {
     fn add_assign(&mut self, other: Self) {
         *self = Self {
-            e: [self.e[0] + other.x(), self.e[1] + other.y(), self.e[2] + other.z(),
+            e: [self.e[0] + other.x(), self.e[1] + other.y(), self.e[2] + other.z()]
         }
     }
 }
@@ -74,7 +75,7 @@ impl AddAssign for Vec3 {
 impl SubAssign for Vec3 {
     fn sub_assign(&mut self, other: Self) {
         *self = Self {
-            e: [self.e[0] - other.x(), self.e[1] - other.y(), self.e[2] - other.z(),
+            e: [self.e[0] - other.x(), self.e[1] - other.y(), self.e[2] - other.z()]
         }
     }
 }
